@@ -70,17 +70,19 @@ class QuickSettingsFragmentStore(
          * @param isSecured [Boolean] whether the connection is secured (TLS) or not.
          * @param permissions [SitePermissions]? list of website permissions and their status.
          * @param settings [Settings] application settings.
+         * @param certificateName [String] the certificate name of the current web  page.
          */
         @Suppress("LongParameterList")
         fun createStore(
             context: Context,
             websiteUrl: String,
+            certificateName: String,
             isSecured: Boolean,
             permissions: SitePermissions?,
             settings: Settings
         ) = QuickSettingsFragmentStore(
             QuickSettingsFragmentState(
-                webInfoState = createWebsiteInfoState(websiteUrl, isSecured),
+                webInfoState = createWebsiteInfoState(websiteUrl, isSecured, certificateName),
                 websitePermissionsState = createWebsitePermissionState(
                     context,
                     permissions,
@@ -101,13 +103,14 @@ class QuickSettingsFragmentStore(
         @VisibleForTesting
         fun createWebsiteInfoState(
             websiteUrl: String,
-            isSecured: Boolean
+            isSecured: Boolean,
+            certificateName: String
         ): WebsiteInfoState {
             val (stringRes, iconRes, colorRes) = when (isSecured) {
                 true -> getSecuredWebsiteUiValues
                 false -> getInsecureWebsiteUiValues
             }
-            return WebsiteInfoState(websiteUrl, stringRes, iconRes, colorRes)
+            return WebsiteInfoState(websiteUrl, stringRes, iconRes, colorRes, certificateName)
         }
 
         /**
@@ -225,7 +228,8 @@ data class WebsiteInfoState(
     val websiteUrl: String,
     @StringRes val securityInfoRes: Int,
     @DrawableRes val iconRes: Int,
-    @ColorRes val iconTintRes: Int
+    @ColorRes val iconTintRes: Int,
+    val certificateName: String
 ) : State
 
 /**

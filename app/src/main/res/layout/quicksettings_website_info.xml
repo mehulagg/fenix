@@ -34,4 +34,16 @@
         tools:drawableStart="@drawable/mozac_ic_lock"
         tools:drawableTint="@color/photonGreen50"
         tools:text="Secure connection" />
+
+    <TextView
+        android:id="@+id/certificateInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Name of Certificate" />
+
+
 </LinearLayout>

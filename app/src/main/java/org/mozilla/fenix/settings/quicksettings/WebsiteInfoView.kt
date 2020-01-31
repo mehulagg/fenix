@@ -38,10 +38,15 @@ class WebsiteInfoView(
     fun update(state: WebsiteInfoState) {
         bindUrl(state.websiteUrl)
         bindSecurityInfo(state.securityInfoRes, state.iconRes, state.iconTintRes)
+        bindCertificateName(state.certificateName)
     }
 
     private fun bindUrl(url: String) {
         view.url.text = url
+    }
+
+    private fun bindCertificateName(cert: String) {
+        view.certificateInfo.text = cert
     }
 
     private fun bindSecurityInfo(
