@@ -1206,4 +1206,6 @@
     <string name="confirm_clear_permission_site">Are you sure that you want to clear this permission for this site?</string>
     <!-- label shown when there are not site exceptions to show in the site exception settings -->
     <string name="no_site_exceptions">No site exceptions</string>
+    <!-- text shown before the issuer name to indicate who its verified by -->
+    <string name="verified_by">Verified By:</string>
 </resources>
