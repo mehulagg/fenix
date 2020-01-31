@@ -163,7 +163,8 @@ class ExternalAppBrowserFragment : BaseBrowserFragment(), UserInteractionHandler
                 url = session.url,
                 isSecured = session.securityInfo.secure,
                 sitePermissions = sitePermissions,
-                gravity = getAppropriateLayoutGravity()
+                gravity = getAppropriateLayoutGravity(),
+                certificateName = session.securityInfo.issuer
             )
         nav(R.id.externalAppBrowserFragment, directions)
     }
